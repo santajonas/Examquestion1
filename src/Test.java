@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import java.lang.System;
 
 public class Test extends Application  {
     static ServiceBook serviceBook = new ServiceBook();
+    TextArea textArea = new TextArea();
     Button button;
     Button button2;
     Button button3;
@@ -59,6 +61,8 @@ public class Test extends Application  {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println(serviceBook.getDateOfLastService());
+                textArea.appendText(serviceBook.getDateOfLastService().toString());
+                textArea.appendText("\n");
             }
         });
 
@@ -71,8 +75,12 @@ public class Test extends Application  {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("total mileages" + serviceBook.getAllServiceMileages());
+                textArea.appendText(serviceBook.getAllServiceMileages().toString());
+                textArea.appendText("\n");
             }
         });
+
+
 
         //button for services
         button3 = new Button();
@@ -81,13 +89,22 @@ public class Test extends Application  {
         button3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println(serviceBook.toString());
+                System.out.println(textArea.getText());
+                textArea.setText(serviceBook.toString());
+                textArea.appendText("\n");
+
             }
         });
 
 
+        grid.add(textArea,2,4);
 
-        Scene scene = new Scene(grid, 300, 250);
+
+
+
+
+
+        Scene scene = new Scene(grid, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
 

@@ -17,10 +17,10 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
-                "mileage=" + mileage +
-                ", date=" + date +
-                '}';
+        return "Service {" + "\n"+
+                "mileage=" + mileage + "\n"+
+                "date=" + date + "}"
+                +"\n";
     }
 }
 
